@@ -29,6 +29,7 @@ buying_speed = 4
 # TODO: You need to put your NFT link here
 NFT_link = "https://thetatv.thetadrop.com/order/saleord_3vpe9m5s7mhty4yn3xssdbun"
 
+
 buy_xpath = "//button[normalize-space()='Buy']"
 
 

@@ -23,7 +23,7 @@ chrome_options.add_argument("user-data-dir=chrome-data")
 chrome_options.add_argument(f"user-data-dir={scriptDirectory}\\userdata")
 
 # TODO: How much you want to buy
-buying_price = 8
+buying_price = 2
 
 # TODO: You need to put your NFT link here
 NFT_link = "https://thetadrop.com/marketplace"
@@ -33,7 +33,7 @@ driver = webdriver.Chrome(r"../thetadrop/chromedriver.exe", chrome_options=chrom
 
 driver.get(NFT_link)
 
-print(input("Start Scripts.. :"))
+# print(input("Start Scripts.. :"))
 
 # driver.implicitly_wait(10)
 # clean_filter_xpath = "//div[@class='clear-filters']"
@@ -44,6 +44,32 @@ print(input("Start Scripts.. :"))
 # filter_xpath = "//select[@name='sort']"
 # filter_elements = driver.find_element_by_xpath(filter_xpath)
 # filter_elements.click()
+
+
+def buy_nft():
+    select_buy_xpath = "//button[normalize-space()='Select and buy']"
+    select_buy_elements = driver.find_element_by_xpath(select_buy_xpath)
+    select_buy_elements.click()
+
+    # print(input("Buying Nft .. :"))
+
+    select_buy_radio_xpath = "//tbody/tr[2]/td[5]/div[1]"
+    select_buy_radio_elements = driver.find_element_by_xpath(select_buy_radio_xpath)
+    select_buy_radio_elements.click()
+
+    # print(input("Buying Nft Select low price .. :"))
+
+    select_buy_low_xpath = "//button[@class='btn l green action-button']"
+    select_buy_low_xpath_elements = driver.find_element_by_xpath(select_buy_low_xpath)
+    select_buy_low_xpath_elements.click()
+
+    print(input("Buying Nft Select low price .. :"))
+
+    pay_with_tfuel_xpath = "//button[normalize-space()='Pay with TFUEL']"
+    pay_with_tfuel_xpath_xpath_elements = driver.find_element_by_xpath(pay_with_tfuel_xpath)
+    pay_with_tfuel_xpath_xpath_elements.click()
+
+    print(input("Buying Nft Select low price .. :"))
 
 
 def nft_search(price_xpath):
@@ -60,16 +86,13 @@ def nft_search(price_xpath):
             new_nft_price = dollar_nft_price.replace(",", "")
             if float(new_nft_price) < float(buying_price):
                 i.click()
-
-                # buy_xpath = "//button[normalize-space()='Buy']"
-                # deposit_elements = driver.find_element_by_xpath(buy_xpath)
-                # deposit_elements.click()
-
+                buy_nft()
                 time.sleep(8)
                 break
             else:
                 print(f"price is biggest than {buying_price}")
             time.sleep(4)
+            print(input("Search again .. :"))
 
 
 price_value_xpath = "//strong[@class='price-value']"
