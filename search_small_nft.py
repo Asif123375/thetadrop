@@ -23,10 +23,10 @@ chrome_options.add_argument("user-data-dir=chrome-data")
 chrome_options.add_argument(f"user-data-dir={scriptDirectory}\\userdata")
 
 # TODO: How much you want to buy
-buying_price = 2
+buying_price = 8
 
 # TODO: You need to put your NFT link here
-NFT_link = "https://thetatv.thetadrop.com/marketplace"
+NFT_link = "https://thetadrop.com/marketplace"
 
 # TODO : fixed url path and test in Trven Device
 driver = webdriver.Chrome(r"../thetadrop/chromedriver.exe", chrome_options=chrome_options)
@@ -69,7 +69,7 @@ def nft_search(price_xpath):
                 break
             else:
                 print(f"price is biggest than {buying_price}")
-            # time.sleep(2)
+            time.sleep(4)
 
 
 price_value_xpath = "//strong[@class='price-value']"
