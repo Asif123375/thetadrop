@@ -23,7 +23,7 @@ chrome_options.add_argument("user-data-dir=chrome-data")
 chrome_options.add_argument(f"user-data-dir={scriptDirectory}\\userdata")
 
 # TODO: How much you want to buy
-buying_price = 200
+buying_price = 2
 
 # TODO: You need to put your NFT link here
 NFT_link = "https://thetatv.thetadrop.com/marketplace"
@@ -46,8 +46,8 @@ print(input("Start Scripts.. :"))
 # filter_elements.click()
 
 
-def nft_search(price_xpath, buy_xpath):
-    for i in range(100):
+def nft_search(price_xpath):
+    for i in range(10000):
         driver.get(NFT_link)
         driver.implicitly_wait(10)
         # price_value_xpath = "//strong[@class='price-value']"
@@ -56,19 +56,20 @@ def nft_search(price_xpath, buy_xpath):
         for i in price_value_elements:
             nft_price = i.text
             print(nft_price)
-            new_nft_price = nft_price.replace("$", "")
+            dollar_nft_price = nft_price.replace("$", "")
+            new_nft_price = dollar_nft_price.replace(",", "")
             if float(new_nft_price) < float(buying_price):
                 i.click()
 
-                buy_xpath = "//button[normalize-space()='Buy']"
-                deposit_elements = driver.find_element_by_xpath(buy_xpath)
-                deposit_elements.click()
+                # buy_xpath = "//button[normalize-space()='Buy']"
+                # deposit_elements = driver.find_element_by_xpath(buy_xpath)
+                # deposit_elements.click()
 
                 time.sleep(8)
                 break
             else:
                 print(f"price is biggest than {buying_price}")
-            time.sleep(2)
+            # time.sleep(2)
 
 
 price_value_xpath = "//strong[@class='price-value']"
