@@ -69,7 +69,7 @@ def buy_nft():
     pay_with_tfuel_xpath_xpath_elements = driver.find_element_by_xpath(pay_with_tfuel_xpath)
     pay_with_tfuel_xpath_xpath_elements.click()
 
-    print(input("Buying Nft Select low price .. :"))
+    # print(input("Buying Nft Select low price .. :"))
 
 
 def nft_search(price_xpath):
@@ -92,7 +92,7 @@ def nft_search(price_xpath):
             else:
                 print(f"price is biggest than {buying_price}")
         time.sleep(4)
-        print(input("Search again .. :"))
+        # print(input("Search again .. :"))
 
 
 price_value_xpath = "//strong[@class='price-value']"
