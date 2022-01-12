@@ -23,8 +23,8 @@ chrome_options.add_argument("user-data-dir=chrome-data")
 chrome_options.add_argument(f"user-data-dir={scriptDirectory}\\userdata")
 
 # TODO: How much you want to buy
-buying_limits = 5
-buying_speed = 4
+buying_price = 5
+
 
 # TODO: You need to put your NFT link here
 NFT_link = "https://thetatv.thetadrop.com/marketplace"
@@ -52,9 +52,16 @@ price_value_xpath = "//strong[@class='price-value']"
 price_value_elements = driver.find_elements_by_xpath(price_value_xpath)
 
 for i in price_value_elements:
-    print(i)
-    print(i.text)
-    print(i.text)
+    # print(i)
+    nft_price = i.text
+    print(nft_price)
+    new_nft_price = nft_price.replace("$", "")
+    print(new_nft_price)
+    print(input(".. :"))
+    if float(new_nft_price) > float(buying_price):
+        i.click()
+    else:
+        print(f"price is biggest than {buying_price}")
     print(input(".. :"))
 # filter_elements[0].click()
 
