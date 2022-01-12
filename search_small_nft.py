@@ -57,12 +57,12 @@ for i in price_value_elements:
     print(nft_price)
     new_nft_price = nft_price.replace("$", "")
     print(new_nft_price)
-    print(input(".. :"))
-    if float(new_nft_price) > float(buying_price):
+    print(input("Filtered Price.. :"))
+    if float(new_nft_price) < float(buying_price):
         i.click()
     else:
         print(f"price is biggest than {buying_price}")
-    print(input(".. :"))
+    print(input("Loop End .. :"))
 # filter_elements[0].click()
 
-print(input(".. :"))
+print(input("Element End .. :"))
